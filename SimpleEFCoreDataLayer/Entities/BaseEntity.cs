@@ -21,5 +21,24 @@ namespace SimpleEFCoreDataLayer.Entities
         public string FatherName { get; set; }
         public string NationalCode { get; set; }
         public Gender Gender { get; set; }
+        public int Age { get; set; }
+        public DateTime BirthDate { get; set; }
     }
+
+    public class Coach : Person
+    {
+
+    }
+
+    public class Member : Person
+    {
+        public DateTime RegisterDate { get; set; }
+    }
+
+    public class Employee : Person
+    {
+
+    }
+
+
 }
