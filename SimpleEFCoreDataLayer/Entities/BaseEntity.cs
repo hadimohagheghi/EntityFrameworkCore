@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using SimpleEFCoreDataLayer.Enums;
 using SimpleEFCoreDataLayer.ValueObjects;
 
@@ -50,6 +51,9 @@ namespace SimpleEFCoreDataLayer.Entities
     {
         public string Title { get; set; }
         public AgeRange AgeRange { get; set; }
+
+        //
+        public List<Gym> Gyms { get; set; }
     }
 
 
@@ -62,6 +66,10 @@ namespace SimpleEFCoreDataLayer.Entities
         //Navigation Property : Access to : A number of employees
         public List<Employee> Employees { get; set; }
         public List<Session> Sessions { get; set; }
+
+        //
+        public SportType SportType { get; set; } //Reference Navigation Property
+        public int SportTypeId { get; set; }
 
     }
 
