@@ -5,6 +5,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleEFCoreDataLayer.Enums;
+using SimpleEFCoreDataLayer.ValueObjects;
 
 namespace SimpleEFCoreDataLayer.Entities
 {
@@ -40,5 +41,35 @@ namespace SimpleEFCoreDataLayer.Entities
 
     }
 
+    public class SportType : BaseEntity<int>
+    {
+        public string Title { get; set; }
+        public AgeRange AgeRange { get; set; }
+    }
+
+
+
+
+    public class Gym : BaseEntity<Guid>
+    {
+        public string Title { get; set; }
+
+    }
+
+    class Session : BaseEntity<int>
+    {
+        public Time StarTime { get; set; }
+        public Time EndTime { get; set; }
+        public Gender Gender { get; set; }
+
+    }
+
+    class CoachingCertificate:BaseEntity<Guid>
+    {
+        /// <summary>
+        /// مثلاً : مربیگری درجه یک پرورش اندام ....
+        /// </summary>
+        public string Title { get; set; }
+    }
 
 }
