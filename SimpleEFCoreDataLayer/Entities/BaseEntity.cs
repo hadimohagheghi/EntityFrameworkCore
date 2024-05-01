@@ -39,6 +39,11 @@ namespace SimpleEFCoreDataLayer.Entities
     public class Employee : Person
     {
 
+        //Navigation Property
+        public Gym Gym { get; set; }   
+        public Guid GymId { get; set; }
+
+        //Gym (Parent , Reference) -> Employee (Child,Collection)
     }
 
     public class SportType : BaseEntity<int>
@@ -54,13 +59,21 @@ namespace SimpleEFCoreDataLayer.Entities
     {
         public string Title { get; set; }
 
+        //Navigation Property : Access to : A number of employees
+        public List<Employee> Employees { get; set; }
+        public List<Session> Sessions { get; set; }
+
     }
 
-    class Session : BaseEntity<int>
+    public class Session : BaseEntity<int>
     {
         public Time StarTime { get; set; }
         public Time EndTime { get; set; }
         public Gender Gender { get; set; }
+
+        //Navigation Property
+        public Guid GymId { get; set; }
+        public Gym Gym { get; set; }//Navigation Property
 
     }
 
