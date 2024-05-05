@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SimpleEFCoreDataLayer.Configs;
 using SimpleEFCoreDataLayer.Entities;
 
 namespace SimpleEFCoreDataLayer.SportComplexDBContext
@@ -55,6 +56,11 @@ namespace SimpleEFCoreDataLayer.SportComplexDBContext
             */
 
             base.OnModelCreating(modelBuilder);
+
+
+            var assembly = typeof(CoachConfig).Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
         }
     }
 }

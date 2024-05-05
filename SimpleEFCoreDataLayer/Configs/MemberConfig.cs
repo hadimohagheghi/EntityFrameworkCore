@@ -24,8 +24,8 @@ namespace SimpleEFCoreDataLayer.Configs
     {
         public void Configure(EntityTypeBuilder<Coach> builder)
         {
-            builder.ToTable("Members", "PRS");
-            builder.HasComment("این جدول برای نگهداری اطلاعات ورزشکاران است");
+            builder.ToTable("Coaches", "PRS");
+            builder.HasComment("این جدول برای نگهداری اطلاعات مربیان است");
 
         }
     }
