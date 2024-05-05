@@ -16,7 +16,7 @@ namespace SimpleEFCoreDataLayer.Entities
         public bool IsDeleted { get; set; }
     }
 
-    public class Person
+    public class Person : BaseEntity<int>
     {
         public string Name { get; set; }
         public string Family { get; set; }
@@ -139,4 +139,8 @@ namespace SimpleEFCoreDataLayer.Entities
         //? public int MemberId { get; set; }
     }
 
+
+
+    //Configuration By Fluent API (Config on Separated Entities) : The relationship between DBContext and Entities & Mapping to DB
+    //Don't Use DataAnnotation!
 }

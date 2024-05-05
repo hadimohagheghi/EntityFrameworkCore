@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using SimpleEFCoreDataLayer.Entities;
 
 namespace SimpleEFCoreDataLayer.SportComplexDBContext
 {
@@ -25,10 +27,34 @@ namespace SimpleEFCoreDataLayer.SportComplexDBContext
             base.OnConfiguring(optionsBuilder);
         }
 
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
-        {
-            
-        }
+        //public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
+        //{
 
+        //}
+
+
+        //public DbSet<Member> Members { get; set; }
+        //Configuration By Fluent API : The relationship between DBContext and Entities & Mapping to DB : Method A
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            /*this method is not Best Practice
+            //We do not want to create a table equivalent to this entity
+            modelBuilder.Ignore<Coach>();
+            //We just want to introduce the tables
+            modelBuilder.Entity<Member>()
+                .ToTable("Members","PRS");  //TableName  , Schema : To group tables 
+
+            //
+            modelBuilder.Entity<Employee>(c =>
+                {
+                    c.ToTable("Employees");
+                    c.Property(p => p.Name).HasMaxLength(100);
+                    c.HasKey(k => k.Id);
+                }
+            );
+            */
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
