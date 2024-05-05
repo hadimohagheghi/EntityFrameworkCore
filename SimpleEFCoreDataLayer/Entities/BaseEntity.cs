@@ -35,8 +35,9 @@ namespace SimpleEFCoreDataLayer.Entities
 
     public class Member : Person
     {
+        public string FullName { get; set; }
         public DateTime RegisterDate { get; set; }
-
+        public string TrackingCode { get; set; }
 
         public List<GymSessionMember> GymSessionMembers { get; set; }
     }
@@ -66,6 +67,7 @@ namespace SimpleEFCoreDataLayer.Entities
     public class Gym : BaseEntity<Guid>
     {
         public string Title { get; set; }
+        public int MemberCount { get; set; }
 
         //Navigation Property : Access to : A number of employees
         public List<Employee> Employees { get; set; }
