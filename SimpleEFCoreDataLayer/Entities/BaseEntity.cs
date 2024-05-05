@@ -29,22 +29,26 @@ namespace SimpleEFCoreDataLayer.Entities
 
     public class Coach : Person
     {
-
+        public List<GymCoach> GymCoaches { get; set; }
+        public List<CoachCertificate> CoachCertificates { get; set; }
     }
 
     public class Member : Person
     {
         public DateTime RegisterDate { get; set; }
+
+
+        public List<GymSessionMember> GymSessionMembers { get; set; }
     }
 
     public class Employee : Person
     {
 
         //Navigation Property
-        public Gym Gym { get; set; }   
+        public Gym Gym { get; set; }
         public Guid GymId { get; set; }
 
-        //Gym (Parent , Reference) -> Employee (Child,Collection)
+        //Gym (Parent , Master , Reference) -> Employee (Child, Detail ,Collection)
     }
 
     public class SportType : BaseEntity<int>
@@ -52,7 +56,7 @@ namespace SimpleEFCoreDataLayer.Entities
         public string Title { get; set; }
         public AgeRange AgeRange { get; set; }
 
-        //
+        //Collection Navigation Property
         public List<Gym> Gyms { get; set; }
     }
 
@@ -67,7 +71,10 @@ namespace SimpleEFCoreDataLayer.Entities
         public List<Employee> Employees { get; set; }
         public List<Session> Sessions { get; set; }
 
-        //
+
+        public List<GymCoach> GymCoaches { get; set; }
+
+        //Reference Navigation Property
         public SportType SportType { get; set; } //Reference Navigation Property
         public int SportTypeId { get; set; }
 
@@ -79,18 +86,57 @@ namespace SimpleEFCoreDataLayer.Entities
         public Time EndTime { get; set; }
         public Gender Gender { get; set; }
 
-        //Navigation Property
+        //Regerence Navigation Property
         public Guid GymId { get; set; }
         public Gym Gym { get; set; }//Navigation Property
 
+
+
+        public List<GymSessionMember> GymSessionMembers { get; set; }
+
     }
 
-    class CoachingCertificate:BaseEntity<Guid>
+    public class CoachingCertificate : BaseEntity<Guid>
     {
         /// <summary>
         /// مثلاً : مربیگری درجه یک پرورش اندام ....
         /// </summary>
         public string Title { get; set; }
+
+
+        public List<CoachCertificate> CoachCertificates { get; set; }
+    }
+
+    /// <summary>
+    /// ارتباط بین باشگاه و مربی
+    /// رابطه چند به چند
+    /// </summary>
+    public class GymCoach : BaseEntity<int>
+    {
+        public Gym Gym { get; set; }
+        public Guid GymId { get; set; }
+
+        public Coach Coach { get; set; }
+        public int CoachId { get; set; }
+
+    }
+
+    public class CoachCertificate
+    {
+        public CoachingCertificate CoachingCertificate { get; set; }
+        public int CoachingCertificateId { get; set; }
+
+        public Coach Coach { get; set; }
+        public int CoachId { get; set; }
+    }
+
+    public class GymSessionMember
+    {
+        public Session Session { get; set; }
+        public int SessionId { get; set; }
+
+        public Member Member { get; set; }
+        //? public int MemberId { get; set; }
     }
 
 }
