@@ -85,6 +85,8 @@ namespace SimpleEFCoreDataLayer.Entities
         public Time StarTime { get; set; }
         public Time EndTime { get; set; }
         public Gender Gender { get; set; }
+        public decimal Fee { get; set; } //بعضی باشگاه ها هزینه صبح ارزانتر از بعدازظهر هستش
+
 
         //Regerence Navigation Property
         public Guid GymId { get; set; }
@@ -102,6 +104,7 @@ namespace SimpleEFCoreDataLayer.Entities
         /// مثلاً : مربیگری درجه یک پرورش اندام ....
         /// </summary>
         public string Title { get; set; }
+        public string Description { get; set; }
 
 
         public List<CoachCertificate> CoachCertificates { get; set; }
