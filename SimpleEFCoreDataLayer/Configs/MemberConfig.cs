@@ -16,6 +16,15 @@ namespace SimpleEFCoreDataLayer.Configs
             builder.ToTable("Members", "PRS");
             builder.HasComment("این جدول برای نگهداری اطلاعات ورزشکاران است");
 
+            //پیش فرض کلید اصلی اتوجنریت هستش و مقادیرش خودش ساخته میشود
+            builder.HasKey(k => k.Id)//مشخص کردن کلید اصلی
+                .HasName("ID"); //تغییرنام کلید اصلی
+            builder.HasAlternateKey(AK => AK.NationalCode);
+            //کلید ترکیبی
+            //چند تا فیلد به عنوان کلید اصلی
+           // builder.HasKey(k => new { k.Id, k.NationalCode });
+
+
 
             builder.Property(p => p.Name)
                 .HasColumnName("FirstName")
