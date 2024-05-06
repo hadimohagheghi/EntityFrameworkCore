@@ -1,13 +1,18 @@
-Package(s) : 
-            Microsoft.EntityFrameworkCore
-            Microsoft.EntityFrameworkCore.Tools   
-                         با استفاده از Powershell یا Package Manager Console   امکانات Migration رو برای ما فراهم می کند 
-            Microsoft.EntityFrameworkCore.SqlServer
+## Entity Framework Core
 
-Add DBContext -> Console or WebApplication
-Add Service into WebApp(Program.cs)
-
-
-02.02.EntitiesAndConfigurations :
-
-
+1.  DbContext
+2.  Entities And Configurations
+    
+    \- Navigation Property
+    
+    \-Configuration By Fluent API
+    
+3.  Entity Properties
+4.  Keys
+5.  Default Values
+    
+    \- Default Value
+    
+    \- Computed Column
+    
+    \- Value Code Generator
