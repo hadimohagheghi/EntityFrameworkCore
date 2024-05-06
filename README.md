@@ -1,18 +1,18 @@
 ## Entity Framework Core
 
-1.  DbContext
-2.  Entities And Configurations
+*   [x] DbContext
+*   [x] Entities And Configurations
     
-    \- Navigation Property
+    [x] Navigation Property
     
-    \-Configuration By Fluent API
+    [ ] Configuration By Fluent API
     
-3.  Entity Properties
-4.  Keys
-5.  Default Values
+*   [ ] Entity Properties
+*   [ ] Keys
+*   [ ] Default Values
     
-    \- Default Value
+    [ ] Default Value
     
-    \- Computed Column
+    [ ] Computed Column
     
-    \- Value Code Generator
+    [ ] Value Code Generator
