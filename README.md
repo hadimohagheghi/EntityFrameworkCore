@@ -3,19 +3,19 @@
 *    [x]  DbContext
 *    [x]  Entities And Configurations
     
-    \[x\] Navigation Property
+    [x] Navigation Property
     
-    \[ \] Configuration By Fluent API
+    [ ] Configuration By Fluent API
     
 *    [ ]  Entity Properties
 *    [ ]  Keys
 *    [ ]  Default Values
     
-    \[ \] Default Value
+    [ ] Default Value
     
-    \[ \] Computed Column
+    [ ] Computed Column
     
-    \[ \] Value Code Generator
+    [ ] Value Code Generator
     
 *   [ ] Concurrency Token
 *   [ ] Shadow Properties
