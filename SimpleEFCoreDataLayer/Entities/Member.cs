@@ -7,4 +7,8 @@ public class Member : Person
     public string TrackingCode { get; set; }
 
     public List<GymSessionMember> GymSessionMembers { get; set; }
+
+
+    public MemberImage MemberImage { get; set; } //Navigation Property
+
 }

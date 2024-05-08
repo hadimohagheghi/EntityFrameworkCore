@@ -84,6 +84,10 @@ namespace SimpleEFCoreDataLayer.Configs
                 .ValueGeneratedOnUpdate()
                 .HasValueGenerator<DateTimeValueGenerator>();
 
+            builder.HasOne(p => p.MemberImage)
+                .WithOne(ch => ch.Member)
+                .HasForeignKey<MemberImage>(f => f.MemberId);
+
         }
     }
 }
