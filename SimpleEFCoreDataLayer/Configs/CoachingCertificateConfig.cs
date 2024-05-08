@@ -21,5 +21,6 @@ public class CoachingCertificateConfig : IEntityTypeConfiguration<CoachingCertif
             .HasMaxLength(6000)
             .IsRequired(false);
 
+       
     }
 }

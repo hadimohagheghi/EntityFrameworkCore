@@ -11,5 +11,10 @@ public class CoachConfig : IEntityTypeConfiguration<Coach>
         builder.ToTable("Coaches", "PRS");
         builder.HasComment("این جدول برای نگهداری اطلاعات مربیان است");
 
+
+
+        builder.HasMany(c => c.CoachCertificates)
+            .WithMany(c => c.Coaches)
+            .UsingEntity(c => c.ToTable("CoachCoachingCertificates")); //جدول واسط
     }
 }

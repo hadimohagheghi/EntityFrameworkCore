@@ -7,4 +7,7 @@ public class CoachCertificate
 
     public Coach Coach { get; set; }
     public int CoachId { get; set; }
+
+
+    public List<Coach> Coaches { get; set; }
 }
