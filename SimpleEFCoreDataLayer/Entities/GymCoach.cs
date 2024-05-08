@@ -12,4 +12,6 @@ public class GymCoach : BaseEntity<int>
     public Coach Coach { get; set; }
     public int CoachId { get; set; }
 
+    public DateTime DateofStart { get; set; }//زمان شروع کار مربی در باشگاه
+
 }

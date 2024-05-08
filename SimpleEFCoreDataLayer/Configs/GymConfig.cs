@@ -41,5 +41,16 @@ public class GymConfig : IEntityTypeConfiguration<Gym>
             .HasForeignKey(seession => seession.GymId)
             .OnDelete(DeleteBehavior.Restrict);
 
+
+        builder.HasMany(c => c.Coaches)
+            .WithMany(c => c.Gyms)
+            .UsingEntity<GymCoach>(e => //موجودیت واسط
+                    e.HasOne(gc => gc.Coach).WithMany(nc => nc.GymCoaches).HasForeignKey(fgc => fgc.CoachId),
+                g => g.HasOne(gc => gc.Gym).WithMany(nc => nc.GymCoaches).HasForeignKey(fgc => fgc.GymId),
+                gymCoach => { gymCoach.HasKey(c => c.Id);
+                    gymCoach.Property(p => p.DateofStart).HasDefaultValueSql("GETDATE()");
+                }
+            );
+
     }
 }

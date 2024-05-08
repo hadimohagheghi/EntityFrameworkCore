@@ -11,6 +11,9 @@ public class Gym : BaseEntity<Guid>
 
 
     public List<GymCoach> GymCoaches { get; set; }
+    //Relation Gym and Coach
+    public List<Coach> Coaches { get; set; }//ByPass :  the interface entity
+
 
     //Reference Navigation Property
     public SportType SportType { get; set; } //Reference Navigation Property
