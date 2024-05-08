@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.VisualBasic;
 using SimpleEFCoreDataLayer.Entities;
 using SimpleEFCoreDataLayer.ValueGenerator;
 
@@ -34,6 +35,7 @@ namespace SimpleEFCoreDataLayer.Configs
 
             builder.Property(p => p.Name)
                 .HasColumnName("FirstName")
+                //.IsConcurrencyToken() //ConcurrencyToken
                 .HasColumnType("nvarchar(200)")
                 .IsRequired();
 
@@ -42,6 +44,7 @@ namespace SimpleEFCoreDataLayer.Configs
                 .HasColumnName("LastName")
                 .HasMaxLength(200)
                 .IsRequired();
+                //.IsConcurrencyToken();
 
             builder.Property(p => p.FatherName)
                 //.HasColumnName("FatherName")
@@ -67,54 +70,25 @@ namespace SimpleEFCoreDataLayer.Configs
                 .ValueGeneratedOnAdd()  //چه زمانی مقدار ساخته شود؟
                 .HasValueGenerator<TrackingCodeValueGenerator>()
                 .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save); //اگر داخل برنامه مقدار داخلش قرار دادم از اتوجنریت استفاده نکن
-        }
-    }
 
 
-    public class CoachConfig : IEntityTypeConfiguration<Coach>
-    {
-        public void Configure(EntityTypeBuilder<Coach> builder)
-        {
-            builder.ToTable("Coaches", "PRS");
-            builder.HasComment("این جدول برای نگهداری اطلاعات مربیان است");
+            builder.Property(p => p.RowVersion).IsRowVersion(); //RowVersion
 
-        }
-    }
+            //ShadowProperty
+            builder.Property<DateTime>("CreateDate") 
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GETDATE()");
 
+            builder.Property<DateTime>("ModifiedDate")
+                .HasColumnType("datetime2")
+                .ValueGeneratedOnUpdate()
+                .HasValueGenerator<DateTimeValueGenerator>();
 
-    public class CoachingCertificateConfig : IEntityTypeConfiguration<CoachingCertificate>
-    {
-        public void Configure(EntityTypeBuilder<CoachingCertificate> builder)
-        {
-            builder.ToTable("CoachingCertificates", "PRS");
-            builder.HasComment("این جدول برای نگهداری اطلاعات مدارک مربیگری است");
-
-            builder.Property(p => p.Title)
-                .HasMaxLength(200)
-                .IsRequired()
-                .HasComment("عنوان مدرک مربیگری");
-
-            builder.Property(p => p.Description)
-               // .HasMaxLength(200) => Max Length
-               .HasMaxLength(6000)
-                .IsRequired(false);
+            builder.HasOne(p => p.MemberImage)
+                .WithOne(ch => ch.Member)
+                .HasForeignKey<MemberImage>(f => f.MemberId);
 
         }
     }
-
-
-    public class SessionConfig : IEntityTypeConfiguration<Session>
-    {
-        public void Configure(EntityTypeBuilder<Session> builder)
-        {
-            builder.ToTable("Sessions", "PRS");
-            builder.HasComment("این جدول برای نگهداری اطلاعات جلسات و سانس های باشگاه ها است");
-
-            builder.Property(p => p.Fee)
-                .HasPrecision(14, 3) //whole : 14 digit .and 4 digits should be decimal
-                ;
-
-        }
-    }
-
 }
+
