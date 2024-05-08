@@ -33,7 +33,7 @@ namespace SimpleEFCoreDataLayer.Configs
 
 
             builder.Property(p => p.Name)
-                .HasColumnName("FirstName")
+                .HasColumnName("FirstName").IsConcurrencyToken() //ConcurrencyToken
                 .HasColumnType("nvarchar(200)")
                 .IsRequired();
 
@@ -41,7 +41,8 @@ namespace SimpleEFCoreDataLayer.Configs
             builder.Property(p => p.Family)
                 .HasColumnName("LastName")
                 .HasMaxLength(200)
-                .IsRequired();
+                .IsRequired()
+                .IsConcurrencyToken();
 
             builder.Property(p => p.FatherName)
                 //.HasColumnName("FatherName")
@@ -67,6 +68,9 @@ namespace SimpleEFCoreDataLayer.Configs
                 .ValueGeneratedOnAdd()  //چه زمانی مقدار ساخته شود؟
                 .HasValueGenerator<TrackingCodeValueGenerator>()
                 .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save); //اگر داخل برنامه مقدار داخلش قرار دادم از اتوجنریت استفاده نکن
+
+
+
         }
     }
 
