@@ -38,7 +38,8 @@ public class GymConfig : IEntityTypeConfiguration<Gym>
         //رابطه فقط سمت پرنت ایجاد می شود
         builder.HasMany(gym => gym.Sessions)
             .WithOne(session => session.Gym)
-            .HasForeignKey(seession => seession.GymId);
+            .HasForeignKey(seession => seession.GymId)
+            .OnDelete(DeleteBehavior.Restrict);
 
     }
 }

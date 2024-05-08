@@ -60,7 +60,8 @@ namespace SimpleEFCoreDataLayer.Configs
 
             builder.HasOne(employee => employee.Gym)
                 .WithMany(gym => gym.Employees)
-                .HasForeignKey(f=>f.GymId);
+                .HasForeignKey(f=>f.GymId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }
