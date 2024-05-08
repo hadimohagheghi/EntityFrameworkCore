@@ -72,7 +72,19 @@ namespace SimpleEFCoreDataLayer.Configs
                 .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save); //اگر داخل برنامه مقدار داخلش قرار دادم از اتوجنریت استفاده نکن
 
 
-            builder.Property(p => p.RowVersion).IsRowVersion();
+            builder.Property(p => p.RowVersion).IsRowVersion(); //RowVersion
+
+            //ShadowProperty
+            builder.Property<DateTime>("CreateDate") 
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GETDATE()");
+
+            builder.Property<DateTime>("ModifiedDate")
+                .HasColumnType("datetime2")
+                .ValueGeneratedOnUpdate()
+                .HasValueGenerator<DateTimeValueGenerator>();
+
         }
     }
 }
+
