@@ -20,7 +20,6 @@
 *   [ ] Concurrency Token
 *   [ ] Shadow Properties
 *   [ ] Relationship
-*   [ ] First Migration
 *   [ ] Indexes
 *   [ ] Inheritance
 *   [ ] Sequence
