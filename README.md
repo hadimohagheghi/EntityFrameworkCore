@@ -1,14 +1,14 @@
 ## Entity Framework Core
 
 *    [ ]  DbContext
-
 ## 
 کلاس اصلی ارتباط بین برنامه و پایگاه‌داده در EF Core است. از طریق آن می‌توان داده‌ها را از دیتابیس خواند، ذخیره کرد یا تغییر داد. به نوعی مغز EF محسوب می‌شود که تمام عملیات داده‌ای از طریق آن انجام می‌گیرد.
 
 
-
 *    [ ]  Entities And Configurations
-    
+## 
+Entities همان کلاس‌هایی هستند که نشان‌دهنده جدول‌های دیتابیس هستند. Configurations تنظیماتی‌اند که مشخص می‌کنند هر property از Entity چگونه در دیتابیس ذخیره شود (مثلاً طول رشته یا نوع ستون).
+
 *    [ ] Navigation Property
     
 *    [ ] Configuration By Fluent API
